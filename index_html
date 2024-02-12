@@ -1,0 +1,47 @@
+def create_envelope():
+    envelope = """
+           ____
+         /       \\
+        /         \\
+       /___________\\
+      |  _________  |
+      | |       0 | |
+      | |  .-"-.  | |
+      | | '   ' | | |
+      |  \\     /  | |
+       \\  \\___/  / /
+        \\_______/ /
+         |       |
+         |       |
+         |       |
+         |       |
+         |       |
+         |       |
+         |_______|
+    """
+
+    return envelope
+
+def reveal_message(envelope, message):
+    # Add the message inside the envelope
+    envelope_lines = envelope.split('\n')
+    message_lines = message.split('\n')
+
+    # Calculate the starting position to place the message in the middle of the envelope
+    start_position = (len(envelope_lines) - len(message_lines)) // 2
+
+    # Insert the message lines into the envelope
+    for i in range(len(message_lines)):
+        envelope_lines[start_position + i] += " " + message_lines[i]
+
+    # Combine the lines to form the final envelope with the hidden message
+    final_envelope = '\n'.join(envelope_lines)
+
+    return final_envelope
+
+# Example usage
+envelope = create_envelope()
+hidden_message = "Will you be my Valentine?"
+valentine_envelope = reveal_message(envelope, hidden_message)
+
+print(valentine_envelope)
